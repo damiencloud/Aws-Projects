@@ -68,6 +68,7 @@ docker run: The command to start a new container.
 
 nginx: Specifies the image to use.
 
+
 2. Creating a Custom Image
 A Dockerfile was used as a set of instructions to tell Docker how to build the custom container image.
 
