@@ -1,0 +1,50 @@
+# 🧠 AWS AI Image Recognition System
+
+This project demonstrates how to use **Amazon Rekognition** to automatically detect objects and labels in images uploaded to **Amazon S3**, with results processed by **AWS Lambda** and indexed for searching via **Amazon OpenSearch Service** (formerly Elasticsearch).
+
+---
+
+## ⚙️ Architecture
+
+![Architecture Diagram](./architecture-diagram.png) 
+
+**Workflow:**
+1. User uploads an image to the **S3 bucket**  
+2. The S3 event triggers an **AWS Lambda function**  
+3. Lambda calls **Amazon Rekognition** to detect labels  
+4. Detected labels and metadata are uploaded to **Amazon OpenSearch** for indexing  
+5. The indexed data can be queried or searched by users in real time  
+
+---
+
+## 🧰 AWS Services Used
+| Service | Purpose |
+|----------|----------|
+| **Amazon S3** | Stores uploaded images |
+| **AWS Lambda** | Executes AI logic on upload |
+| **Amazon Rekognition** | Detects objects, labels, and scenes |
+| **Amazon OpenSearch Service** | Stores metadata for fast search |
+| **CloudWatch** | Logs execution and monitoring |
+| **IAM** | Manages service permissions |
+
+---
+
+## 💡 Features
+- Real-time image processing  
+- Serverless architecture  
+- AI-based label detection using AWS Rekognition  
+- Search capability via OpenSearch  
+- Scalable and event-driven  
+
+---
+
+## 🧠 Learning Outcomes
+- Integrating AI (Rekognition) into a cloud pipeline  
+- Using S3 triggers to automate data flow  
+- Setting up permissions and roles for AWS services  
+- Understanding event-driven serverless architecture  
+
+---
+
+### 👨‍💻 Author
+**Damien Joseph Martin**  
