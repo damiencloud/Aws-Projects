@@ -8,53 +8,56 @@ This project demonstrates how to use **Amazon Rekognition** to automatically det
 
 ![Architecture Diagram](./Screenshots/Screenshot%202025-10-24%20125249.png)
 
-**Workflow:**
-1. User uploads an image to the **S3 bucket**  
-2. The S3 event triggers an **AWS Lambda function**  
-3. Lambda calls **Amazon Rekognition** to detect labels  
-4. Detected labels and metadata are uploaded to **Amazon OpenSearch** for indexing  
-5. The indexed data can be queried or searched by users in real time  
+### 🔄 Workflow
+1. A user uploads an image to the **Amazon S3 bucket**  
+2. The **S3 event notification** triggers an **AWS Lambda function**  
+3. Lambda calls **Amazon Rekognition** to detect labels, objects, or scenes in the image  
+4. The detected labels and metadata are uploaded to **Amazon OpenSearch Service** for indexing  
+5. The indexed data can be **queried or searched** by users in real time  
 
 ---
 
 ## 🧰 AWS Services Used
+
 | Service | Purpose |
 |----------|----------|
-| **Amazon S3** | Stores uploaded images |
-| **AWS Lambda** | Executes AI logic on upload |
-| **Amazon Rekognition** | Detects objects, labels, and scenes |
-| **Amazon OpenSearch Service** | Stores metadata for fast search |
-| **CloudWatch** | Logs execution and monitoring |
-| **IAM** | Manages service permissions |
+| **Amazon S3** | Stores the uploaded images |
+| **AWS Lambda** | Executes the AI workflow on every upload |
+| **Amazon Rekognition** | Detects labels and objects in the image |
+| **Amazon OpenSearch Service** | Stores and indexes image metadata for fast search |
+| **Amazon CloudWatch** | Logs and monitors Lambda executions |
+| **AWS IAM** | Provides permission policies for secure service communication |
 
 ---
 
 ## 💡 Features
-- Real-time image processing  
-- Serverless architecture  
-- AI-based label detection using AWS Rekognition  
-- Search capability via OpenSearch  
-- Scalable and event-driven  
+
+- ⚡ **Real-time image processing** on upload  
+- 🧱 **Serverless architecture** powered by AWS Lambda  
+- 🤖 **AI-driven label detection** using Amazon Rekognition  
+- 🔍 **Search capability** via Amazon OpenSearch  
+- ☁️ **Fully scalable and event-driven** workflow  
 
 ---
 
 ## 🧠 Learning Outcomes
-- Integrating AI (Rekognition) into a cloud pipeline  
-- Using S3 triggers to automate data flow  
-- Setting up permissions and roles for AWS services  
-- Understanding event-driven serverless architecture  
+
+Through this project, I learned how to:
+- Integrate **AI services (Rekognition)** into a serverless cloud pipeline  
+- Configure **S3 event triggers** to automate workflows  
+- Manage **IAM permissions** for inter-service communication  
+- Design and deploy **event-driven architectures** on AWS  
 
 ---
 
-### 👨‍💻 Author
+## 📸 Screenshots
+
+You can find architecture visuals and test results in the [`Screenshots/`](./Screenshots) directory.
+
+---
+
+## 👨‍💻 Author
+
 **Damien Joseph Martin**  
-
-
-
-
-
-
-
-
-
-
+*Cloud Engineering Enthusiast*  
+🔗 [GitHub Profile](https://github.com/damiencloud)
