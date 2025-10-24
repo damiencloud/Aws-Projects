@@ -2,19 +2,12 @@
 
 This project demonstrates how to use **Amazon Rekognition** to automatically detect objects and labels in images uploaded to **Amazon S3**, with results processed by **AWS Lambda** and indexed for searching via **Amazon OpenSearch Service** (formerly Elasticsearch).
 
----
-
-## ⚙️ Architecture
-
-![Architecture Diagram](./Screenshots/Screenshot%202025-10-24%20125249.png)
-
 ### 🔄 Workflow
 1. A user uploads an image to the **Amazon S3 bucket**  
 2. The **S3 event notification** triggers an **AWS Lambda function**  
 3. Lambda calls **Amazon Rekognition** to detect labels, objects, or scenes in the image  
 4. The detected labels and metadata are uploaded to **Amazon OpenSearch Service** for indexing  
 5. The indexed data can be **queried or searched** by users in real time  
-
 ---
 
 ## 🧰 AWS Services Used
@@ -27,7 +20,6 @@ This project demonstrates how to use **Amazon Rekognition** to automatically det
 | **Amazon OpenSearch Service** | Stores and indexes image metadata for fast search |
 | **Amazon CloudWatch** | Logs and monitors Lambda executions |
 | **AWS IAM** | Provides permission policies for secure service communication |
-
 ---
 
 ## 💡 Features
@@ -47,14 +39,6 @@ Through this project, I learned how to:
 - Configure **S3 event triggers** to automate workflows  
 - Manage **IAM permissions** for inter-service communication  
 - Design and deploy **event-driven architectures** on AWS  
-
----
-
-## 💼 Resume Summary
-
-> Designed and deployed a **serverless AI image recognition pipeline** using AWS Lambda, Rekognition, and S3.  
-> Implemented automatic label detection and indexing with Amazon OpenSearch for real-time search and analytics.
-
 ---
 
 ## 👨‍💻 Author
@@ -63,5 +47,5 @@ Through this project, I learned how to:
 *Cloud Engineering Enthusiast*  
 🔗 [GitHub Profile](https://github.com/damiencloud)
 
-"D:\Screenshot 2025-10-24 125249.png"
+
 
