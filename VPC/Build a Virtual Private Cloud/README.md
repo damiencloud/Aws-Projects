@@ -53,3 +53,9 @@ You can explore more cloud projects and discussions at
 
 **Author:** Damien Joseph  
 **Platform:** [NextWork](https://community.nextwork.org)
+
+
+<img width="1430" height="320" alt="Screenshot 2025-10-27 145935" src="https://github.com/user-attachments/assets/c9dead2d-52e5-48ef-988e-e059107a6a13" />
+<img width="1677" height="269" alt="Screenshot 2025-10-27 144923" src="https://github.com/user-attachments/assets/45c1ed06-a6cf-40dc-80ad-476d6c24f55b" />
+<img width="1392" height="827" alt="Screenshot 2025-10-27 144715" src="https://github.com/user-attachments/assets/3433669c-6d26-4f64-bf7f-cf221c523f9c" />
+<img width="1355" height="867" alt="Screenshot 2025-10-27 143938" src="https://github.com/user-attachments/assets/7c18eeaa-1eab-447d-a793-4ace7df25d07" />
