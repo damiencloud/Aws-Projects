@@ -196,12 +196,3 @@ aws-ec2-monitoring/
   ```
 
 ---
-
-## 📧 Author
-
-**Eros Works**  
-AWS Hands-on Projects | Cloud & DevOps Learning  
-📍 AWS Region: Mumbai  
-🕹️ GitHub: [Add your repo link here]
-
----
