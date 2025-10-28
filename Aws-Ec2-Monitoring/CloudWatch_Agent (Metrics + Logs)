@@ -1,0 +1,177 @@
+# CloudWatch Agent Configuration (Logs + Metrics)
+
+This configuration enables the **Amazon CloudWatch Agent** to collect and publish **system metrics** and **log files** from your EC2 instance to **Amazon CloudWatch**.
+
+---
+
+## 🧩 Overview
+
+The configuration file defines:
+- Metrics collection for CPU, memory, disk, swap, etc.  
+- Log collection from `/var/log/messages`  
+- Dimensions and metadata for easier filtering  
+- Metrics aggregation and StatsD listener configuration  
+
+---
+
+## ⚙️ Configuration File
+
+### **Full JSON Config**
+```json
+{
+  "agent": {
+    "metrics_collection_interval": 60,
+    "run_as_user": "root"
+  },
+  "logs": {
+    "logs_collected": {
+      "files": {
+        "collect_list": [
+          {
+            "file_path": "/var/log/messages",
+            "log_group_class": "STANDARD",
+            "log_group_name": "ec2logsforcwagentinstance",
+            "log_stream_name": "ec2logstream",
+            "retention_in_days": 1
+          }
+        ]
+      }
+    }
+  },
+  "metrics": {
+    "aggregation_dimensions": [
+      ["InstanceId"]
+    ],
+    "append_dimensions": {
+      "AutoScalingGroupName": "${aws:AutoScalingGroupName}",
+      "ImageId": "${aws:ImageId}",
+      "InstanceId": "${aws:InstanceId}",
+      "InstanceType": "${aws:InstanceType}"
+    },
+    "metrics_collected": {
+      "cpu": {
+        "measurement": [
+          "cpu_usage_idle",
+          "cpu_usage_iowait",
+          "cpu_usage_user",
+          "cpu_usage_system"
+        ],
+        "metrics_collection_interval": 60,
+        "resources": ["*"],
+        "totalcpu": false
+      },
+      "disk": {
+        "measurement": ["used_percent", "inodes_free"],
+        "metrics_collection_interval": 60,
+        "resources": ["*"]
+      },
+      "diskio": {
+        "measurement": ["io_time"],
+        "metrics_collection_interval": 60,
+        "resources": ["*"]
+      },
+      "mem": {
+        "measurement": ["mem_used_percent"],
+        "metrics_collection_interval": 60
+      },
+      "statsd": {
+        "metrics_aggregation_interval": 60,
+        "metrics_collection_interval": 10,
+        "service_address": ":8125"
+      },
+      "swap": {
+        "measurement": ["swap_used_percent"],
+        "metrics_collection_interval": 60
+      }
+    }
+  }
+}
+```
+
+---
+
+## 📜 Logs Collection
+
+- **File path:** `/var/log/messages`  
+- **Log group name:** `ec2logsforcwagentinstance`  
+- **Log stream name:** `ec2logstream`  
+- **Retention:** 1 day  
+- **Class:** Standard  
+
+💡 This setup sends system messages from `/var/log/messages` to CloudWatch Logs for real-time monitoring.
+
+---
+
+## 📊 Metrics Collection
+
+### **CPU Metrics**
+- `cpu_usage_idle`
+- `cpu_usage_iowait`
+- `cpu_usage_user`
+- `cpu_usage_system`
+
+### **Disk Metrics**
+- `used_percent`
+- `inodes_free`
+
+### **Disk I/O Metrics**
+- `io_time`
+
+### **Memory Metrics**
+- `mem_used_percent`
+
+### **Swap Metrics**
+- `swap_used_percent`
+
+### **StatsD Listener**
+- **Service address:** `:8125`  
+- Collects custom application metrics using StatsD protocol.
+
+---
+
+## 🧩 Dimensions
+
+The following metadata is automatically added to all metrics:
+| Dimension | Description |
+|------------|--------------|
+| `InstanceId` | EC2 Instance ID |
+| `InstanceType` | Type of EC2 instance |
+| `ImageId` | AMI ID |
+| `AutoScalingGroupName` | Associated ASG (if any) |
+
+---
+
+## 🚀 Deployment Steps
+
+1. **Save configuration:**
+   ```bash
+   sudo mkdir -p /opt/aws/amazon-cloudwatch-agent/etc
+   sudo nano /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
+   ```
+   Paste the JSON above and save the file.
+
+2. **Start or reload the CloudWatch Agent:**
+   ```bash
+   sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl      -a fetch-config      -m ec2      -c file:/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json      -s
+   ```
+
+3. **Verify agent status:**
+   ```bash
+   sudo systemctl status amazon-cloudwatch-agent
+   ```
+
+4. **View metrics and logs:**
+   - CloudWatch → **Metrics → CWAgent**
+   - CloudWatch → **Logs → Log groups → ec2logsforcwagentinstance**
+
+---
+
+## 📈 Example CloudWatch Metrics
+
+| Metric Name | Description | Unit |
+|--------------|-------------|------|
+| `cpu_usage_user` | CPU time spent in user space | Percent |
+| `mem_used_percent` | Memory used percentage | Percent |
+| `disk_used_percent` | Disk usage | Percent |
+| `swap_used_percent` | Swap usage | Percent |
+| `io_time` | Disk I/O time | Milliseconds |
