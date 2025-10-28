@@ -107,7 +107,7 @@ sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-c
   - `disk_used_percent`
 
 📸 *Example Metric Graphs (CPUUtilization)*  
-![CloudWatch Metrics Screenshot](./screenshots/metrics.png)
+![CloudWatch Metrics Screenshot](./Screenshots/metrics.png)
 
 ---
 
